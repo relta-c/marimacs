@@ -62,8 +62,7 @@ flycheck_*.el
 
 # marimacs
 
-/pkg
 /run
 /data
 .last-package-update-day
-
+/straight
