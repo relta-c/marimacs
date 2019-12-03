@@ -2,21 +2,17 @@
 
 (use-package projectile
   :config
-  (projectile-mode +1))
+  (projectile-mode t))
 
 (use-package treemacs
   :after all-the-icons
-  :init(with-eval-after-load 'winum
-    (define-key winum-keymap (kbd "M-0") #'treemacs-select-window))
   :hook (after-init . treemacs-select-window)
   :config
   (treemacs-modify-theme "Default"
     :config
     (progn
       (treemacs-create-icon :icon (all-the-icons-octicon "file-text")
-			    :extensions (fallback))      
-      (treemacs-create-icon :icon (all-the-icons-icon-for-file "license")
-			    :extensions ("license" "copying"))
+			    :extensions (fallback))
       (treemacs-create-icon :icon (all-the-icons-icon-for-file "license")
 			    :extensions ("license" "copying"))      
       (treemacs-create-icon :icon (all-the-icons-fileicon "gnu")

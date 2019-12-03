@@ -62,7 +62,7 @@ flycheck_*.el
 
 # marimacs
 
-/run
+/runtime
 /data
 .last-package-update-day
 /straight

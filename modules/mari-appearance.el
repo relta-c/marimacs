@@ -11,6 +11,9 @@
 (setq initial-scratch-message nil)
 (defalias 'display-startup-echo-area-message 'ignore)
 
+;; Disable line wrapping
+(set-default 'truncate-lines t)
+
 ;; Disable ring-bell
 (setq ring-bell-function 'ignore)
 
