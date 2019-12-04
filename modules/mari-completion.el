@@ -1,4 +1,7 @@
 ;;; mari-completion.el --- Marimacs configuration file -*- lexical-binding: t -*-
+;;; commentary:
+;;; code:
+
 
 (use-package company
   :custom

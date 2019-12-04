@@ -1,4 +1,6 @@
 ;;; mari-project.el --- Marimacs configuration file -*- lexical-binding: t -*-
+;;; commentary:
+;;; code:
 
 (use-package projectile
   :config
@@ -14,7 +16,7 @@
       (treemacs-create-icon :icon (all-the-icons-octicon "file-text")
 			    :extensions (fallback))
       (treemacs-create-icon :icon (all-the-icons-icon-for-file "license")
-			    :extensions ("license" "copying"))      
+			    :extensions ("license" "copying"))
       (treemacs-create-icon :icon (all-the-icons-fileicon "gnu")
 			    :extensions ("makefile"))
       (treemacs-create-icon :icon (all-the-icons-icon-for-file ".png")
@@ -64,7 +66,7 @@
       (treemacs-create-icon :icon (all-the-icons-icon-for-file ".json")
 			    :extensions ("json"))
       (treemacs-create-icon :icon (all-the-icons-icon-for-file ".log")
-			    :extensions ("log"))            
+			    :extensions ("log"))
       (treemacs-create-icon :icon (all-the-icons-icon-for-file ".hs")
 			    :extensions ("hs" "lhs"))
       (treemacs-create-icon :icon(all-the-icons-fileicon "emacs"

@@ -1,6 +1,9 @@
 ;;; mari-paths.el --- Marimacs configuration file -*- lexical-binding: t -*-
+;;; commentary:
+;;; code:
 
 (use-package no-littering
+  :demand
   :init
   (progn
     (setq no-littering-etc-directory mari:data-directory)

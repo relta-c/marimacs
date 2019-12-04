@@ -1,4 +1,6 @@
 ;;; init.el --- Main marimacs configuration file -*- lexical-binding: t -*-
+;;; commentary:
+;;; code:
 
 ;; Set paths
 (defconst mari:modules-directory
@@ -18,6 +20,10 @@
 (require 'mari-paths)
 (require 'mari-appearance)
 (require 'mari-project)
+(require 'mari-snippets)
 (require 'mari-completion)
+(require 'mari-lsp)
+(require 'mari-cpp)
+(require 'mari-cmake)
 
 ;;; init.el ends here

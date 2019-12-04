@@ -1,4 +1,6 @@
 ;;; mari-appearance.el --- Marimacs configuration file -*- lexical-binding: t -*-
+;;; commentary:
+;;; code:
 
 ;; Disable most GUI elements
 (tool-bar-mode -1)
@@ -23,6 +25,8 @@
 
 ;; Doom one theme
 (use-package doom-themes
+  :custom
+  (doom-themes-treemacs-theme "doom-colors")
   :config
   (load-theme 'doom-one t)
   (doom-themes-org-config))
@@ -34,7 +38,16 @@
 ;; Show git changes
 (use-package git-gutter
   :config
-  (global-git-gutter-mode +1))
+  (global-git-gutter-mode t))
+
+;; Highlight numbers
+(use-package highlight-numbers
+  :config
+  (set-face-attribute 'highlight-numbers-number nil
+		      :foreground (face-attribute font-lock-constant-face :foreground)
+		      :inherit nil)
+  :hook
+  (prog-mode . highlight-numbers-mode))
 
 (provide 'mari-appearance)
 

@@ -1,4 +1,6 @@
 ;;; mari-packages.el --- Marimacs configuration file -*- lexical-binding: t -*-
+;;; commentary:
+;;; code:
 
 (defvar bootstrap-version)
 (let ((bootstrap-file
