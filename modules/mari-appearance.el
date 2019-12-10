@@ -23,13 +23,26 @@
 (add-hook 'text-mode-hook #'display-line-numbers-mode)
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 
+(use-package whitespace
+  :straight nil
+  :custom
+  (whitespace-line-column 120)
+  (whitespace-style (quote (face tabs newline ;; space-mark  spaces
+				 tab-mark newline-mark trailing)))
+  (whitespace-display-mappings '((space-mark 32 [183] [46])
+				 (newline-mark 10 [8991 10])
+				 (tab-mark 9 [9655 9] [92 9])))
+  :hook (prog-mode . whitespace-mode))
+
 ;; Doom one theme
 (use-package doom-themes
   :custom
   (doom-themes-treemacs-theme "doom-colors")
   :config
   (load-theme 'doom-one t)
-  (doom-themes-org-config))
+  (doom-themes-org-config)
+  (set-face-attribute 'link nil
+		      :foreground "#98be65"))
 
 (use-package doom-modeline
   :hook
@@ -48,6 +61,10 @@
 		      :inherit nil)
   :hook
   (prog-mode . highlight-numbers-mode))
+
+(use-package hl-todo
+  :hook
+  (after-init . global-hl-todo-mode))
 
 (provide 'mari-appearance)
 
