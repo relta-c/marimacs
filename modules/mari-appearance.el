@@ -27,7 +27,7 @@
   :straight nil
   :custom
   (whitespace-line-column 120)
-  (whitespace-style (quote (face tabs newline ;; space-mark  spaces
+  (whitespace-style (quote (face tabs newline space-mark  spaces
 				 tab-mark newline-mark trailing)))
   (whitespace-display-mappings '((space-mark 32 [183] [46])
 				 (newline-mark 10 [8991 10])
