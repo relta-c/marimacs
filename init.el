@@ -19,6 +19,7 @@
 (require 'mari-packages)
 (require 'mari-paths)
 (require 'mari-appearance)
+(require 'mari-editing)
 (require 'mari-project)
 (require 'mari-snippets)
 (require 'mari-completion)
