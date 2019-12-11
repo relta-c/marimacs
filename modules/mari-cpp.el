@@ -10,6 +10,21 @@
 (use-package modern-cpp-font-lock
   :hook ((c-mode c++-mode) . modern-c++-font-lock-mode))
 
+(use-package flycheck-clang-tidy
+  :after flycheck lsp-ui
+  :custom
+  (flycheck-clang-tidy-extra-options
+   "-checks=modernize-*,
+   performance-*,
+   readability-*,
+   -modernize-avoid-c-array,
+   -modernize-deprecated-headers,
+   -readability-magic-numbers")
+  :config
+  (flycheck-add-next-checker 'lsp-ui '(info . c/c++-clang-tidy))
+  :hook
+  (flycheck-mode . flycheck-clang-tidy-setup))
+
 (use-package ccls
   :after projectile lsp-mode
   :custom
