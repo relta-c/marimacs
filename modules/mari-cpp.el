@@ -13,13 +13,7 @@
 (use-package flycheck-clang-tidy
   :after flycheck lsp-ui
   :custom
-  (flycheck-clang-tidy-extra-options
-   "-checks=modernize-*,
-   performance-*,
-   readability-*,
-   -modernize-avoid-c-array,
-   -modernize-deprecated-headers,
-   -readability-magic-numbers")
+  (flycheck-clang-tidy-extra-options (concat "-checks= -config=" (expand-file-name ".clang-tidy" (projectile-project-root))))
   :config
   (flycheck-add-next-checker 'lsp-ui '(info . c/c++-clang-tidy))
   :hook
@@ -31,12 +25,12 @@
   (ccls-sem-highlight-method 'overlay)
   (ccls-executable (executable-find "ccls"))
   (ccls-initialization-options '(:index (:comments 2 :onChange t)
-					:completion (:detailedLabel t)
-					:clang (:extraArgs ["-Wall"
-							    "-Wextra"
-							    "-Wconversion"
-							    "-Wsign-conversion"
-							    "-pedantic"])))
+                                        :completion (:detailedLabel t)
+                                        :clang (:extraArgs ["-Wall"
+                                                            "-Wextra"
+                                                            "-Wconversion"
+                                                            "-Wsign-conversion"
+                                                            "-pedantic"])))
   :config (push ".ccls-cache" projectile-globally-ignored-directories)
   :hook ((c-mode c++-mode objc-mode) .
          (lambda () (require 'ccls) (lsp))))
