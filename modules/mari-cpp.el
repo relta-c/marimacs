@@ -25,12 +25,7 @@
   (ccls-sem-highlight-method 'overlay)
   (ccls-executable (executable-find "ccls"))
   (ccls-initialization-options '(:index (:comments 2 :onChange t)
-                                        :completion (:detailedLabel t)
-                                        :clang (:extraArgs ["-Wall"
-                                                            "-Wextra"
-                                                            "-Wconversion"
-                                                            "-Wsign-conversion"
-                                                            "-pedantic"])))
+                                        :completion (:detailedLabel t)))
   :config (push ".ccls-cache" projectile-globally-ignored-directories)
   :hook ((c-mode c++-mode objc-mode) .
          (lambda () (require 'ccls) (lsp))))

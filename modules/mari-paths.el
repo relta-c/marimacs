@@ -14,12 +14,12 @@
           `((".*" ,(expand-file-name "auto-save" mari:runtime-directory) t)))
     (setq custom-file (no-littering-expand-etc-file-name "custom.el"))
 
-     (eval-when-compile
-       (require 'recentf))
+    (eval-when-compile
+      (require 'recentf))
 
-     (with-eval-after-load 'recentf
-       (add-to-list 'recentf-exclude no-littering-etc-directory)
-       (add-to-list 'recentf-exclude no-littering-var-directory))))
+    (with-eval-after-load 'recentf
+      (add-to-list 'recentf-exclude no-littering-etc-directory)
+      (add-to-list 'recentf-exclude no-littering-var-directory))))
 
 (provide 'mari-paths)
 

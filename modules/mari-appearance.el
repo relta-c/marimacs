@@ -28,10 +28,10 @@
   :custom
   (whitespace-line-column 120)
   (whitespace-style (quote (face tabs newline space-mark  spaces
-				 tab-mark newline-mark trailing)))
+                                 tab-mark newline-mark trailing)))
   (whitespace-display-mappings '((space-mark 32 [183] [46])
-				 (newline-mark 10 [8991 10])
-				 (tab-mark 9 [9655 9] [92 9])))
+                                 (newline-mark 10 [8991 10])
+                                 (tab-mark 9 [9655 9] [92 9])))
   :hook (prog-mode . whitespace-mode))
 
 ;; Doom one theme
@@ -41,8 +41,7 @@
   :config
   (load-theme 'doom-one t)
   (doom-themes-org-config)
-  (set-face-attribute 'link nil
-		      :foreground "#98be65"))
+  (set-face-attribute 'link nil :foreground "#98be65"))
 
 (use-package doom-modeline
   :hook
@@ -57,8 +56,8 @@
 (use-package highlight-numbers
   :config
   (set-face-attribute 'highlight-numbers-number nil
-		      :foreground (face-attribute font-lock-constant-face :foreground)
-		      :inherit nil)
+                      :foreground (face-attribute font-lock-constant-face :foreground)
+                      :inherit nil)
   :hook
   (prog-mode . highlight-numbers-mode))
 

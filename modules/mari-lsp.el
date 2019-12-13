@@ -32,8 +32,8 @@
   (defun mari:save-after-change (newname)
     (save-some-buffers t)
     (if (or (equal major-mode 'c-mode)
-	    (equal major-mode 'c++-mode))
-	(ccls-reload)))
+            (equal major-mode 'c++-mode))
+        (ccls-reload)))
   (advice-add 'lsp-rename :after 'mari:save-after-change)
 
   :hook ((c-mode c++-mode) . lsp))
@@ -43,15 +43,15 @@
   :after lsp company
   :custom
   (company-transformers nil
-   company-lsp-async t
-   company-lsp-cache-candidates nil)
+                        company-lsp-async t
+                        company-lsp-cache-candidates nil)
   :config
   (push 'company-lsp company-backends))
 
 (use-package lsp-ui
   :after lsp
   :straight (el-patch :type git :host github :repo "emacs-lsp/lsp-ui"
-		      :fork (:host github :repo "relta-c/lsp-ui"))
+                      :fork (:host github :repo "relta-c/lsp-ui"))
   :commands lsp-ui-mode
   :custom
   (lsp-ui-sideline-delay 0)
