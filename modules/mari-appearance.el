@@ -40,6 +40,10 @@
                                  (tab-mark 9 [9655 9] [92 9])))
   :hook (prog-mode . whitespace-mode))
 
+(use-package rainbow-delimiters
+  :hook
+  (emacs-lisp-mode . rainbow-delimiters-mode))
+
 ;; Doom one theme
 (use-package doom-themes
   :custom
