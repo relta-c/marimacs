@@ -23,6 +23,12 @@
 (add-hook 'text-mode-hook #'display-line-numbers-mode)
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 
+;; Show parens
+(show-paren-mode 1)
+
+;; Highlight current line
+(global-hl-line-mode t)
+
 (use-package whitespace
   :straight nil
   :custom

@@ -14,6 +14,12 @@
   :config
   (c-set-offset 'substatement-open 0))
 
+(setq electric-pair-pairs '((?\{ . ?\})
+                       (?\( . ?\))
+                       (?\[ . ?\])
+                       (?\" . ?\")))
+(electric-pair-mode t)
+
 (provide 'mari-editing)
 
 ;;; mari-editing.el ends here
