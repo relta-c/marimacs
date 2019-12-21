@@ -96,7 +96,7 @@
                                                          :height 0.9)
                             :extensions ("cask"))
       (treemacs-create-icon :icon (all-the-icons-icon-for-file ".yml")
-                            :extensions ("yml" "yaml"))
+                            :extensions ("yml" "yaml" ".clang-tidy" ".clang-format"))
       (treemacs-create-icon :icon (all-the-icons-icon-for-file ".gitignore")
                             :extensions ("gitignore"))
       (treemacs-create-icon :icon (all-the-icons-octicon "file-directory")

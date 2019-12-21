@@ -26,5 +26,6 @@
 (require 'mari-lsp)
 (require 'mari-cpp)
 (require 'mari-cmake)
+(require 'mari-yaml)
 
 ;;; init.el ends here
