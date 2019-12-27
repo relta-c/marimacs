@@ -6,7 +6,7 @@
 (use-package company
   :custom
   (company-idle-delay 0)
-  (company-minimum-prefix-length 1)
+  (company-minimum-prefix-length 3)
   (company-selection-wrap-around t)
   (company-tooltip-align-annotations t)
   :hook
