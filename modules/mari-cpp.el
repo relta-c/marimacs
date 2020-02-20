@@ -1,4 +1,4 @@
-;;; mari-lsp.el --- Marimacs configuration file -*- lexical-binding: t -*-
+;;; mari-cpp.el --- Marimacs configuration file -*- lexical-binding: t -*-
 ;;; commentary:
 ;;; code:
 
