@@ -23,12 +23,13 @@
 (require 'mari-editing)
 (require 'mari-evil)
 (require 'mari-project)
-(require 'mari-treemacs)
 (require 'mari-snippets)
 (require 'mari-completion)
 (require 'mari-lsp)
 (require 'mari-cpp)
 (require 'mari-cmake)
 (require 'mari-yaml)
+(require 'mari-hydra)
+(require 'mari-helm)
 
 ;;; init.el ends here

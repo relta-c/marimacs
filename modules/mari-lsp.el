@@ -29,12 +29,12 @@
   (lsp-enable-text-document-color t)
 
   :config
-  (defun mari:save-after-change (newname)
+  (defun mari:save-after-rename (newname)
     (save-some-buffers t)
     (if (or (equal major-mode 'c-mode)
             (equal major-mode 'c++-mode))
         (ccls-reload)))
-  (advice-add 'lsp-rename :after 'mari:save-after-change)
+  (advice-add 'lsp-rename :after 'mari:save-after-rename)
 
   :hook ((c-mode c++-mode) . lsp))
 

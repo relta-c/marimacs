@@ -2,23 +2,19 @@
 ;;; commentary:
 ;;; code:
 
- (defun split-and-follow-horizontally ()
-	(interactive)
-	(split-window-below)
-	(balance-windows)
-	(other-window 1))
- (global-set-key (kbd "C-x 2") 'split-and-follow-horizontally)
-
- (defun split-and-follow-vertically ()
-	(interactive)
-	(split-window-right)
-	(balance-windows)
-	(other-window 1))
-(global-set-key (kbd "C-x 3") 'split-and-follow-vertically)
+(defun mari:forget-project ()
+  "Remove current project from project list."
+  (setq inhibit-message t)
+  (projectile-remove-current-project-from-known-projects)
+  (setq inhibit-message nil))
 
 (use-package projectile
+  :custom
+  (projectile-project-search-path '("~/data/development"))
   :config
   (projectile-mode t))
+
+(add-hook 'projectile-after-switch-project-hook #'mari:forget-project)
 
 (provide 'mari-project)
 

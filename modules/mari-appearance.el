@@ -75,6 +75,11 @@
   :hook
   (after-init . global-hl-todo-mode))
 
+(use-package all-the-icons-dired
+  :after all-the-icons
+  :hook
+  (dired-mode . all-the-icons-dired-mode))
+
 (provide 'mari-appearance)
 
 ;;; mari-appearance.el ends here

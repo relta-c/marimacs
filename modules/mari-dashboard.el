@@ -9,6 +9,7 @@
   (dashboard-show-shortcuts nil)
   (dashboard-set-heading-icons t)
   (dashboard-set-file-icons t)
+  (dashboard-center-content t)
   (dashboard-set-footer nil)
   :config
   (dashboard-setup-startup-hook))
