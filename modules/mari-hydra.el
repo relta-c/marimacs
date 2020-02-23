@@ -23,11 +23,13 @@
     ^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------
     I N D E X
     ^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------
-    _f_ find            ^ ^                 _p_ project         _q_ cancel          ^
+    _f_ find            _w_ window          _p_ project         _q_ cancel          ^
     "
+    ("w" mari:hydra-window/body)
     ("f" mari:hydra-find/body)
     ("p" mari:hydra-project/body)
     ("q" nil))
+
   (defhydra mari:hydra-find (:color blue :hint nil)
     "
     ^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------
@@ -35,10 +37,11 @@
     ^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------
     _f_ file            _d_ directory       _b_ buffer          _q_ cancel          ^
     "
-    ("f" (mari:do-in-project 'helm-projectile-find-files))
+    ("f" (mari:do-in-project 'helm-projectile-find-file t))
     ("d" (mari:do-in-project 'helm-projectile-find-dir))
     ("b" (mari:do-in-project 'helm-projectile-switch-to-buffer))
     ("q" nil))
+
   (defhydra mari:hydra-project (:color blue :hint nil)
     "
     ^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------
@@ -49,6 +52,16 @@
     ("p" (mari:do-in-project 'helm-projectile t))
     ("s" (mari:do-in-project 'helm-projectile-switch-project t))
     ("q" nil))
+
+  (defhydra mari:hydra-window (:color blue :hint nil)
+    "
+    ^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------
+    W I N D O W
+    ^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------
+    ^ ^                  ^ ^                ^ ^                 _q_ cancel          ^
+    "
+    ("q" nil))
+
   (global-set-key (kbd "<muhenkan>") 'mari:hydra-index/body))
 
 (provide 'mari-hydra)

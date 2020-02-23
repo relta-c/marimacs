@@ -9,7 +9,9 @@
   (helm-mode))
 
 (use-package helm-projectile
-  :after helm)
+  :after helm
+  :config
+  (helm-projectile-on))
 
 (provide 'mari-helm)
 

@@ -13,6 +13,9 @@
 (setq initial-scratch-message nil)
 (defalias 'display-startup-echo-area-message 'ignore)
 
+;; Set titlebar
+(setq frame-title-format (concat "marimacs@"(system-name)))
+
 ;; Disable line wrapping
 (set-default 'truncate-lines t)
 
@@ -28,6 +31,9 @@
 
 ;; Highlight current line
 (global-hl-line-mode t)
+
+;; Turn yes-or-no to y-or-n
+(defalias 'yes-or-no-p 'y-or-n-p)
 
 (use-package whitespace
   :straight nil

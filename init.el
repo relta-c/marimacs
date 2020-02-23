@@ -31,5 +31,6 @@
 (require 'mari-yaml)
 (require 'mari-hydra)
 (require 'mari-helm)
+(require 'mari-shell)
 
 ;;; init.el ends here
