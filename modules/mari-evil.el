@@ -11,13 +11,11 @@
 
 (use-package evil-collection
   :after evil
-  :defines company-active-map
   :config
-  (evil-collection-init)
-  :bind (:map company-active-map
-              ("<tab>" . company-complete-selection)))
+  (evil-collection-init))
 
-(add-hook 'dired-mode-hook (lambda () (evil-emacs-state)))
+(use-package evil-magit
+  :after evil magit)
 
 (provide 'mari-evil)
 

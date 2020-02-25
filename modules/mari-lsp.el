@@ -39,6 +39,7 @@
   :hook
   ((css-mode scss-mode sass-mode) . lsp) ;; npm install -g vscode-css-languageserver-bin
   ((typescript-mode) . lsp)
+  ((cmake-mode) . lsp) ;; pip install cmake-language-server
   ((c-mode c++-mode) . lsp)) ;; emerge -av ccls
 
 (use-package company-lsp

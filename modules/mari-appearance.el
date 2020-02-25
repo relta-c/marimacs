@@ -14,7 +14,7 @@
 (defalias 'display-startup-echo-area-message 'ignore)
 
 ;; Set titlebar
-(setq frame-title-format (concat "marimacs@"(system-name)))
+(setq frame-title-format "marimacs")
 
 ;; Disable line wrapping
 (set-default 'truncate-lines t)
@@ -71,6 +71,8 @@
 
 ;; Show git changes
 (use-package git-gutter
+  :custom
+  (git-gutter:update-interval 1)
   :config
   (global-git-gutter-mode t))
 
