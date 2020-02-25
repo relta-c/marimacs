@@ -36,15 +36,18 @@
         (ccls-reload)))
   (advice-add 'lsp-rename :after 'mari:save-after-rename)
 
-  :hook ((c-mode c++-mode) . lsp))
+  :hook
+  ((css-mode scss-mode sass-mode) . lsp) ;; npm install -g vscode-css-languageserver-bin
+  ((typescript-mode) . lsp)
+  ((c-mode c++-mode) . lsp)) ;; emerge -av ccls
 
 (use-package company-lsp
   :commands company-lsp
   :after lsp company
   :custom
-  (company-transformers nil
-                        company-lsp-async t
-                        company-lsp-cache-candidates nil)
+  (company-transformers nil)
+  (company-lsp-async t)
+  (company-lsp-cache-candidates nil)
   :config
   (push 'company-lsp company-backends))
 

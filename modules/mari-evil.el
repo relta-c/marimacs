@@ -3,7 +3,7 @@
 ;;; code:
 
 (use-package evil
-  :preface
+  :init
   (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
   :config

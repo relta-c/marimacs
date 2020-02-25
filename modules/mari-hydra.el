@@ -2,44 +2,53 @@
 ;;; commentary:
 ;;; code:
 
-(defun mari:do-in-project(func &optional unopened)
-  "Execute helm-projectile and then FUNC if project is not opened.
+(setq mari:window-resize-amount 5)
 
-  If Project is already opened then only execute FUNC.
-  If UNOPENED not nil then only execute FUNC when project is not opened"
+(use-package windresize
+  :bind
+  (:map windresize-map
+        ("k" . windresize-up)
+        ("j" . windresize-down)
+        ("h" . windresize-left)
+        ("l". windresize-right)))
+
+(defun mari:split-window-horizontally ()
+  "Split window horizontally then shift focus to new windows."
   (interactive)
-  (if (not (projectile-project-p))
-      (progn
-        (helm-projectile)
-        (when (not unopened)
-          (funcall func)))
-    (funcall func)))
+  (split-window-right)
+  (other-window 1))
+
+(defun mari:split-window-vertically ()
+  "Split window vertically then shift focus to new windows."
+  (interactive)
+  (split-window-below)
+  (other-window 1))
 
 (use-package hydra
-  :after projectile
+  :after projectile counsel-projectile
   :config
   (defhydra mari:hydra-index (:color blue :hint nil)
     "
     ^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------
     I N D E X
     ^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------
-    _f_ find            _w_ window          _p_ project         _q_ cancel          ^
+    _s_ search          _w_ window          _p_ project         _q_ quit            ^
     "
     ("w" mari:hydra-window/body)
-    ("f" mari:hydra-find/body)
+    ("s" mari:hydra-search/body)
     ("p" mari:hydra-project/body)
     ("q" nil))
 
-  (defhydra mari:hydra-find (:color blue :hint nil)
+  (defhydra mari:hydra-search (:color blue :hint nil)
     "
     ^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------
-    F I N D
+    S E A R C H
     ^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------
-    _f_ file            _d_ directory       _b_ buffer          _q_ cancel          ^
+    _f_ file            _d_ directory       _b_ buffer          _q_ quit            ^
     "
-    ("f" (mari:do-in-project 'helm-projectile-find-file t))
-    ("d" (mari:do-in-project 'helm-projectile-find-dir))
-    ("b" (mari:do-in-project 'helm-projectile-switch-to-buffer))
+    ("f" counsel-projectile-find-file)
+    ("d" counsel-projectile-find-dir)
+    ("b" counsel-projectile-find-buffer)
     ("q" nil))
 
   (defhydra mari:hydra-project (:color blue :hint nil)
@@ -47,10 +56,11 @@
     ^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------
     P R O J E C T
     ^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------
-    _p_ project          _s_ switch         ^ ^                 _q_ cancel          ^
+    _a_ add              _d_ remove         _s_ switch          _q_ quit            ^
     "
-    ("p" (mari:do-in-project 'helm-projectile t))
-    ("s" (mari:do-in-project 'helm-projectile-switch-project t))
+    ("a" projectile-add-known-project)
+    ("d" projectile-remove-known-project)
+    ("s" counsel-projectile-switch-project)
     ("q" nil))
 
   (defhydra mari:hydra-window (:color blue :hint nil)
@@ -58,8 +68,27 @@
     ^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------
     W I N D O W
     ^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------
-    ^ ^                  ^ ^                ^ ^                 _q_ cancel          ^
+    _l_ new right        _j_ new below      _w_ jump            _r_ resize          ^
+    ^ ^                  ^ ^                ^ ^                 _q_ quit            ^
     "
+    ("l" (mari:split-window-horizontally))
+    ("j" (mari:split-window-vertically))
+    ("r" mari:hydra-window-resize/body)
+    ("w" ace-window)
+    ("q" nil))
+
+  (defhydra mari:hydra-window-resize (:color amaranth :hint nil)
+    "
+    ^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------
+    W I N D O W   R E S I Z E
+    ^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------
+    _k_ up               _j_ down           _h_ left            _l_ right           ^
+    ^ ^                  ^ ^                ^ ^                 _q_ quit            ^
+    "
+    ("k" (windresize-up mari:window-resize-amount))
+    ("j" (windresize-up (* -1 mari:window-resize-amount)))
+    ("h" (windresize-left mari:window-resize-amount))
+    ("l" (windresize-left (* -1 mari:window-resize-amount)))
     ("q" nil))
 
   (global-set-key (kbd "<muhenkan>") 'mari:hydra-index/body))

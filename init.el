@@ -2,6 +2,11 @@
 ;;; commentary:
 ;;; code:
 
+
+;; Performance
+(setq gc-cons-threshold 100000000)
+(setq read-process-output-max (* 1024 1024))
+
 ;; Set paths
 (defconst mari:modules-directory
   (concat user-emacs-directory "modules"))
@@ -25,9 +30,11 @@
 (require 'mari-project)
 (require 'mari-snippets)
 (require 'mari-completion)
+(require 'mari-ivy)
 (require 'mari-lsp)
 (require 'mari-cpp)
 (require 'mari-cmake)
+(require 'mari-web)
 (require 'mari-yaml)
 (require 'mari-hydra)
 (require 'mari-helm)

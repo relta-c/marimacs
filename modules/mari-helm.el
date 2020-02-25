@@ -3,12 +3,14 @@
 ;;; code:
 
 (use-package helm
+  :disabled
   :bind
   (("M-x" . helm-M-x))
   :config
   (helm-mode))
 
 (use-package helm-projectile
+  :disabled
   :after helm
   :config
   (helm-projectile-on))

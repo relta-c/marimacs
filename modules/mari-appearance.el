@@ -36,6 +36,7 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (use-package whitespace
+  :disabled
   :straight nil
   :custom
   (whitespace-line-column 120)
@@ -45,6 +46,11 @@
                                  (newline-mark 10 [8991 10])
                                  (tab-mark 9 [9655 9] [92 9])))
   :hook (prog-mode . whitespace-mode))
+
+;; Highlight cusor when switching window
+(use-package beacon
+  :config
+  (beacon-mode 1))
 
 (use-package rainbow-delimiters
   :hook
