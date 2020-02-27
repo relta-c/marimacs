@@ -10,6 +10,8 @@
   (evil-mode 1))
 
 (use-package evil-collection
+  :init
+  (setq evil-collection-company-use-tng t)
   :after evil
   :config
   (evil-collection-init))

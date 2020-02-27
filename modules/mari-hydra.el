@@ -71,8 +71,8 @@
     ("w" mari:hydra-window/body)
     ("s" mari:hydra-search/body)
     ("p" mari:hydra-project/body)
-    ("g" mari:hydra-git/body)
-    ("j" avy-goto-char)
+    ("g" magit-status)
+    ("j" avy-goto-char-2)
     ("d" (dired nil))
     ("<muhenkan>" counsel-projectile-find-file)
     ("q" nil))
@@ -147,8 +147,6 @@
     "
     ("s" magit-status)
     ("q" nil))
-
-
 
   (defhydra mari:hydra-window-resize (:color amaranth :hint nil)
     "

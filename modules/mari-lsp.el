@@ -27,6 +27,14 @@
   (lsp-enable-imenu t)
   (lsp-enable-on-type-formatting t)
   (lsp-enable-text-document-color t)
+  (lsp-clients-angular-language-server-command
+  '("node"
+    "/usr/lib64/node_modules/@angular/language-server"
+    "--ngProbeLocations"
+    "/usr/lib64/node_modules"
+    "--tsProbeLocations"
+    "/usr/lib64/node_modules"
+    "--stdio")) ;; npm install -g @angular/language-service@next @angular/language-server
 
   :config
   (defun mari:save-after-rename (newname)
@@ -37,8 +45,9 @@
   (advice-add 'lsp-rename :after 'mari:save-after-rename)
 
   :hook
+  ((html-mode ng2-html) . lsp) ;; npm install -g vscode-html-languageserver-bin
   ((css-mode scss-mode sass-mode) . lsp) ;; npm install -g vscode-css-languageserver-bin
-  ((typescript-mode) . lsp)
+  ((typescript-mode) . lsp) ;; npm i -g typescript-language-server; npm i -g typescript
   ((cmake-mode) . lsp) ;; pip install cmake-language-server
   ((c-mode c++-mode) . lsp)) ;; emerge -av ccls
 
@@ -61,8 +70,8 @@
   (lsp-ui-sideline-delay 0)
   (lsp-ui-sideline-show-hover t))
 
-(use-package lsp-treemacs
-  :after lsp treemacs)
+(use-package lsp-ivy
+  :after lsp ivy)
 
 (provide 'mari-lsp)
 

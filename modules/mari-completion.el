@@ -6,13 +6,14 @@
 (use-package company
   :custom
   (company-idle-delay 0)
-  (company-minimum-prefix-length 3)
+  (company-minimum-prefix-length 1)
   (company-selection-wrap-around t)
   (company-tooltip-align-annotations t)
   :hook
   (prog-mode . global-company-mode))
 
 (use-package company-box
+  :disabled
   :after company all-the-icons
   :custom
   (company-box-show-single-candidate t)

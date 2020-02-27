@@ -4,7 +4,11 @@
 
 (use-package typescript-mode)
 
-(use-package ng2-mode)
+(use-package ng2-mode
+  :custom
+  (sgml-quick-keys 'close)
+  :hook
+  (ng2-html-mode . html-mode))
 
 (provide 'mari-web)
 
