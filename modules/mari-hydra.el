@@ -2,9 +2,6 @@
 ;;; commentary:
 ;;; code:
 
-(defun mari:void ()
-  "Do nothing.")
-
 (defun mari:split-window-horizontally ()
   "Split window horizontally then shift focus to new windows."
   (interactive)
@@ -63,17 +60,20 @@
     ^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------
     I N D E X
     ^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------
-    _f_ file             _s_ search         _w_ window          _p_ project         ^
-    _d_ dired            _j_ jump           _g_ git             ^ ^                 ^
-    ^ ^                  ^ ^                _<muhenkan>_        _q_ quit            ^
+    _f_ file             _d_ directory      _w_ window          _p_ project         ^
+    _j_ jump             _g_ git            _l_ lsp             _s_ search          ^
+    _t_ terminal         ^ ^                _<muhenkan>_        _q_ quit            ^
     "
     ("f" mari:hydra-file/body)
     ("w" mari:hydra-window/body)
     ("s" mari:hydra-search/body)
     ("p" mari:hydra-project/body)
+    ("l" mari:hydra-lsp/body)
     ("g" magit-status)
+    ("s" swiper)
     ("j" avy-goto-char-2)
     ("d" (dired nil))
+    ("t" eshell)
     ("<muhenkan>" counsel-projectile-find-file)
     ("q" nil))
 
@@ -89,6 +89,22 @@
     ("d" (mari:delete-current-file))
     ("q" nil))
 
+  (defhydra mari:hydra-lsp (:color blue :hint nil)
+    "
+    ^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------
+    L S P
+    ^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------
+    _n_ rename           _d_ definitions    _r_ references      _i_ implementation  ^
+    _a_ action           _f_ format         ^ ^                 _q_ quit            ^
+    "
+    ("n" lsp-rename)
+    ("d" lsp-find-definition)
+    ("r" lsp-find-references)
+    ("i" lsp-find-implementation)
+    ("a" lsp-execute-code-action)
+    ("f" lsp-format-buffer)
+    ("q" nil))
+
   (defhydra mari:hydra-jump (:color blue :hint nil)
     "
     ^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------
@@ -100,27 +116,20 @@
     ("l" avy-goto-line)
     ("q" nil))
 
-  (defhydra mari:hydra-search (:color blue :hint nil)
-    "
-    ^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------
-    S E A R C H
-    ^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------
-    _f_ file            _d_ directory       _b_ buffer          _q_ quit            ^
-    "
-    ("f" counsel-projectile-find-file)
-    ("d" counsel-projectile-find-dir)
-    ("b" counsel-projectile-switch-to-buffer)
-    ("q" nil))
-
   (defhydra mari:hydra-project (:color blue :hint nil)
     "
     ^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------
     P R O J E C T
     ^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------
-    _a_ add              _d_ remove         _s_ switch          _q_ quit            ^
+    _f_ file             _d_ directory      _b_ buffer          _g_ grep            ^
+    _a_ add              _r_ remove         _s_ switch          _q_ quit            ^
     "
+    ("f" counsel-projectile-find-file)
+    ("d" counsel-projectile-find-dir)
+    ("b" counsel-projectile-switch-to-buffer)
+    ("g" counsel-projectile-grep)
     ("a" projectile-add-known-project)
-    ("d" projectile-remove-known-project)
+    ("r" projectile-remove-known-project)
     ("s" counsel-projectile-switch-project)
     ("q" nil))
 
@@ -130,22 +139,14 @@
     W I N D O W
     ^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------
     _l_ new right        _j_ new below      _w_ jump            _r_ resize          ^
-    ^ ^                  ^ ^                ^ ^                 _q_ quit            ^
+    _d_ close            _D_ close other    ^ ^                 _q_ quit            ^
     "
     ("l" (mari:split-window-horizontally))
     ("j" (mari:split-window-vertically))
     ("r" mari:hydra-window-resize/body)
+    ("d" delete-window)
+    ("D" delete-other-window)
     ("w" ace-window)
-    ("q" nil))
-
-  (defhydra mari:hydra-git (:color blue :hint nil)
-    "
-    ^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------
-    G I T
-    ^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------
-    _s_ status           ^ ^                ^ ^                 _q_ quit            ^
-    "
-    ("s" magit-status)
     ("q" nil))
 
   (defhydra mari:hydra-window-resize (:color amaranth :hint nil)

@@ -4,10 +4,9 @@
 
 (use-package flycheck
   :custom
-  (flycheck-emacs-lisp-load-path 'inherit)
   (flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc emacs-lisp))
   :hook
-  (after-init . global-flycheck-mode))
+  (prog-mode . flycheck-mode))
 
 (use-package lsp-mode
   :commands lsp
@@ -27,6 +26,10 @@
   (lsp-enable-imenu t)
   (lsp-enable-on-type-formatting t)
   (lsp-enable-text-document-color t)
+  (lsp-eslint-server-command
+   '("node"
+     "/home/relta/.local/share/eslint/eslintServer.js"
+     "--stdio"))
   (lsp-clients-angular-language-server-command
   '("node"
     "/usr/lib64/node_modules/@angular/language-server"

@@ -2,13 +2,13 @@
 ;;; commentary:
 ;;; code:
 
-
 (use-package company
   :custom
   (company-idle-delay 0)
   (company-minimum-prefix-length 1)
   (company-selection-wrap-around t)
   (company-tooltip-align-annotations t)
+  (company-global-modes '(not term-mode message-mode help-mode eshell-mode))
   :hook
   (prog-mode . global-company-mode))
 

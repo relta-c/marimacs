@@ -23,13 +23,11 @@
   :hook ((c-mode c++-mode) . modern-c++-font-lock-mode))
 
 (use-package flycheck-clang-tidy
-  :after flycheck lsp-ui
+  :after flycheck
   :custom
   (flycheck-clang-tidy-extra-options (concat "-checks= -config=" (expand-file-name ".clang-tidy" (projectile-project-root))))
-  :config
-  (flycheck-add-next-checker 'lsp-ui '(info . c/c++-clang-tidy))
   :hook
-  (flycheck-mode . flycheck-clang-tidy-setup))
+  ((c-mode c++-mode) . flycheck-clang-tidy-setup))
 
 (use-package ccls
   :after projectile lsp-mode
