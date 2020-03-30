@@ -145,7 +145,7 @@
     ("j" (mari:split-window-vertically))
     ("r" mari:hydra-window-resize/body)
     ("d" delete-window)
-    ("D" delete-other-window)
+    ("D" delete-other-windows)
     ("w" ace-window)
     ("q" nil))
 
