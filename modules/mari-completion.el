@@ -13,7 +13,6 @@
   (prog-mode . global-company-mode))
 
 (use-package company-box
-  :disabled
   :after company all-the-icons
   :custom
   (company-box-show-single-candidate t)
